@@ -10,7 +10,6 @@
 <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Author+Support+Program" />
 <meta property="og:url" content="https://yourdomain.example/" />
 <link rel="icon" href="/Screenshot 2025-10-02 140612-Picsart-AiImageEnhancer.png">
-
 <style>
   :root{
     --red:#c91818;          /* primary headings & accents */
@@ -581,6 +580,184 @@ That’s why, if you really want your book to succeed on Amazon or in any online
     </div>
   </div>
 </footer>
+<!-- ========== SCI-FI ENTRANCE ANIMATION ========== -->
+<div id="mad-entrance">
+  <canvas id="busCanvas"></canvas>
+  <canvas id="madCanvas"></canvas>
+  <div class="mad-overlay">
+    <h1 class="sci-fi-text" id="sciText"></h1>
+    <p class="mad-sub">Liberation Team • Where Books Get Power</p>
+    <button id="madEnterBtn">ENTER SITE</button>
+  </div>
+</div>
+
+<!-- Google Sci-Fi Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  #mad-entrance {
+    position: fixed;
+    inset: 0;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  #busCanvas, #madCanvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .mad-overlay {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+  }
+  .sci-fi-text {
+    font-family: "Orbitron", sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #0f0;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 5px;
+    text-shadow: 0 0 8px #0f0, 0 0 20px #f00, 0 0 30px #00f;
+  }
+  .sci-fi-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(0.2) rotate(var(--r));
+    animation: flyIn 1.5s forwards;
+  }
+  .sci-fi-text span:nth-child(odd) { color: #0f0; }
+  .sci-fi-text span:nth-child(even) { color: #f00; }
+  .mad-sub {
+    margin: 12px 0 20px;
+    color: #ccc;
+    font-family: "Orbitron", sans-serif;
+  }
+  #madEnterBtn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(45deg, #0f0, #f00, #00f, #aaa);
+    transition: transform 0.2s;
+  }
+  #madEnterBtn:hover { transform: scale(1.1); }
+
+  @keyframes flyIn {
+    to {
+      opacity: 1;
+      transform: translate(0,0) scale(1) rotate(0);
+    }
+  }
+</style>
+
+<script>
+  // ---------------- Particle Background ----------------
+  const canvas = document.getElementById("madCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let w = canvas.width, h = canvas.height;
+
+  const colors = ["#0f0", "#f00", "#00f", "#aaa"];
+  const particles = Array.from({ length: 100 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+    r: Math.random() * 3 + 1,
+    color: colors[Math.floor(Math.random() * colors.length)]
+  }));
+
+  function loopParticles() {
+    ctx.fillStyle = "rgba(5,5,5,0.3)";
+    ctx.fillRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    });
+  }
+
+  // ---------------- Moving Bus ----------------
+  const busCanvas = document.getElementById("busCanvas");
+  const bctx = busCanvas.getContext("2d");
+  busCanvas.width = w; busCanvas.height = h;
+
+  let bus = { x: -150, y: h - 100, w: 150, h: 60, speed: 3 };
+
+  function drawBus() {
+    bctx.clearRect(0,0,w,h);
+    // bus body
+    bctx.fillStyle = "#fff";
+    bctx.fillRect(bus.x, bus.y, bus.w, bus.h);
+    // windows
+    bctx.fillStyle = "#00f";
+    bctx.fillRect(bus.x+10, bus.y+10, 40, 20);
+    bctx.fillRect(bus.x+60, bus.y+10, 40, 20);
+    bctx.fillRect(bus.x+110, bus.y+10, 30, 20);
+    // wheels
+    bctx.fillStyle = "#000";
+    bctx.beginPath();
+    bctx.arc(bus.x+25, bus.y+bus.h, 10, 0, Math.PI*2);
+    bctx.fill();
+    bctx.beginPath();
+    bctx.arc(bus.x+125, bus.y+bus.h, 10, 0, Math.PI*2);
+    bctx.fill();
+    bus.x += bus.speed;
+    if(bus.x > w) bus.x = -bus.w; // loop
+  }
+
+  function animate() {
+    loopParticles();
+    drawBus();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ---------------- Text Fly-in Animation ----------------
+  const text = "WELCOME TO LST";
+  const sciText = document.getElementById("sciText");
+
+  text.split("").forEach((ch,i) => {
+    const span = document.createElement("span");
+    span.textContent = ch;
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * 300 + 100;
+    span.style.setProperty("--x", Math.cos(angle)*dist+"px");
+    span.style.setProperty("--y", Math.sin(angle)*dist+"px");
+    span.style.setProperty("--r", (Math.random()*720-360)+"deg");
+    span.style.animationDelay = (i*0.15)+"s";
+    sciText.appendChild(span);
+  });
+
+  // ---------------- Entrance Button ----------------
+  document.getElementById("madEnterBtn").addEventListener("click", () => {
+    const overlay = document.getElementById("mad-entrance");
+    overlay.style.transition = "opacity 1s ease";
+    overlay.style.opacity = "0";
+    setTimeout(() => overlay.remove(), 1000);
+  });
+
+  window.addEventListener("resize", () => {
+    canvas.width = busCanvas.width = window.innerWidth;
+    canvas.height = busCanvas.height = window.innerHeight;
+    w = canvas.width; h = canvas.height;
+    bus.y = h - 100;
+  });
+</script>
 
 <!-- JSON-LD structured data for packages (light) -->
 <script type="application/ld+json">
@@ -734,4 +911,3 @@ document.getElementById('downloadPitch').addEventListener('click', () => {
 </script>
 </body>
 </html>
-
