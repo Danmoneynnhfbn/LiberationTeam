@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Author Visibility Program — ARC Reviews & Launch Support</title>
+<meta name="description" content="Professional ARC reviews and verified reader support — packages from 5 to 150 reviews, marketing boosts, newsletter features, and full launch support. Honest, verified, genre-targeted readers." />
+<meta property="og:title" content="Author Visibility Program — ARC Reviews & Launch Support" />
+<meta property="og:description" content="Professional ARC reviews and verified reader support — packages from 5 to 150 reviews, marketing boosts, newsletter features, and full launch support." />
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Author+Support+Program" />
+<meta property="og:url" content="https://yourdomain.example/" />
+<link rel="icon" href="/Screenshot 2025-10-02 140612-Picsart-AiImageEnhancer.png">
+
+<style>
+  :root{
+    --red:#c91818;          /* primary headings & accents */
+    --black:#0b0b0b;        /* body text */
+    --white:#ffffff;        /* bg */
+    --muted:#6b7280;        /* secondary text */
+    --green:#1f8a4c;        /* positive highlights */
+    --yellow:#ffd54f;       /* highlight */
+    --card:#fff8f6;         /* card bg */
+    --glass: rgba(2,6,23,0.04);
+    --radius:12px;
+    --maxw:1200px;
+  }
+
+  /* ===== Reset & base ===== */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--black);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+    scroll-behavior:smooth;
+  }
+  a{color:var(--red); text-decoration:none}
+  img{display:block; max-width:100%; height:auto}
+  .container{max-width:var(--maxw); margin:0 auto; padding:20px}
+
+  /* ===== NAV ===== */
+  nav{position:fixed; top:0; left:0; right:0; background:var(--white); border-bottom:1px solid #eee; z-index:1000}
+  .nav-inner{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 20px}
+  .brand{display:flex; gap:12px; align-items:center}
+  .brand .logo{background:linear-gradient(135deg,var(--red),#ff6060); color:var(--white); padding:8px 12px; border-radius:25%; font-weight:700}
+  .brand .title{font-weight:800; color:var(--black)}
+  .nav-links{display:flex; gap:14px; align-items:center}
+  .nav-links a{font-weight:600; color:var(--black); padding:6px 8px; border-radius:6px}
+  .nav-links a:hover{background:#fff0f0}
+  .hamburger{display:none; cursor:pointer; font-weight:700; color:var(--red)}
+
+  /* ===== HERO ===== */
+  .hero{padding:110px 20px 48px; text-align:left; background:linear-gradient(180deg,#fff,#fff); border-bottom:1px solid #f3f4f6}
+  .hero .wrap{display:grid; grid-template-columns:1fr 380px; gap:28px; align-items:center}
+  .hero h1{color:var(--red); font-size:32px; margin:0 0 12px}
+  .hero p.lead{color:var(--muted); margin:0 0 18px}
+  .cta-group{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{background:var(--red); color:var(--white); border:none; padding:12px 16px; border-radius:10px; font-weight:700; cursor:pointer}
+  .btn.ghost{background:transparent; color:var(--red); border:1px solid rgba(201,24,24,0.12)}
+  .btn.secondary{background:var(--green)}
+
+  .hero-card{background:linear-gradient(180deg,#fff,#fff); border-radius:12px; padding:14px; box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+  .reach{color:var(--muted); font-size:14px}
+
+  /* ===== SECTIONS ===== */
+  section{padding:40px 20px}
+  .section-title{color:var(--red); font-size:20px; margin-bottom:10px}
+  .muted{color:var(--muted)}
+
+  /* ===== PACKAGES GRID ===== */
+  .packages-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px}
+  .pkg{background:var(--card); border-radius:12px; padding:18px; border:1px solid rgba(0,0,0,0.04); position:relative; transition:transform .18s ease, box-shadow .18s}
+  .pkg:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,6,23,0.06)}
+  .pkg h3{margin:0 0 6px; color:var(--red)}
+  .price{font-size:18px; font-weight:800; color:var(--black); margin-bottom:8px}
+  .features{color:var(--muted); margin-bottom:10px; padding-left:16px}
+  .pkg .badge{position:absolute; right:14px; top:14px; background:linear-gradient(90deg,var(--yellow),var(--green)); color:#071723; padding:6px 8px; border-radius:8px; font-weight:800; font-size:12px}
+  .more-details{display:none; margin-top:10px; color:var(--muted)}
+  .pkg .select{margin-top:12px; display:flex; gap:8px}
+  .select .btn{flex:1}
+
+  /* highlight recommended */
+  .pkg.recommended{border:2px solid rgba(201,24,24,0.12); box-shadow:0 20px 50px rgba(201,24,24,0.06)}
+
+  /* ===== ACCORDION / EXPLAINERS ===== */
+  .accordion{background:#fff; border-radius:10px; padding:12px; border:1px solid #eee; margin-bottom:12px}
+  .accordion .head{display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer}
+  .accordion .body{display:none; padding-top:12px; color:var(--muted)}
+
+  /* ===== REVIEWS & PORTFOLIO ===== */
+  .review-grid, .portfolio-grid{display:grid; gap:12px}
+  .review-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .review{background:#fff; border-radius:10px; padding:12px; border:1px solid rgba(0,0,0,0.04)}
+  .review .meta{display:flex; gap:10px; align-items:center; margin-bottom:8px}
+  .portfolio-grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+  .portfolio-item{background:linear-gradient(180deg,#fff,#fff); border-radius:10px; padding:8px; border:1px solid rgba(0,0,0,0.04); text-align:center}
+
+  /* ===== COUNTERS ===== */
+  .counters{display:flex; gap:20px; justify-content:space-around; flex-wrap:wrap; padding:18px; background:linear-gradient(180deg,#fffdf6,#ffffff)}
+  .counter{flex:1; min-width:160px; text-align:center}
+  .counter h3{font-size:28px; color:var(--red); margin:4px 0}
+  .counter p{color:var(--muted); margin:0}
+
+  /* ===== FAQ & FOUNDERS ===== */
+  .faq-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .faq q{font-style:italic}
+  .founder{display:flex; gap:20px; align-items:center;padding:12px; background:#fff; border-radius:12px; border:1px solid #eee}
+  .founder img{width:120px; height:120px; border-radius:12px; object-fit:cover}
+
+  /* ===== CONTACT ===== */
+  .contact-card{max-width:900px; margin:0 auto; background:linear-gradient(180deg,#fff,#fff); padding:18px; border-radius:12px; border:1px solid #eee}
+  form .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  input, textarea, select {width:100%; padding:10px; border-radius:8px; border:1px solid #e6e6e6}
+  textarea{min-height:120px}
+  .form-actions{display:flex; gap:10px; margin-top:10px}
+  .note{font-size:13px; color:var(--muted)}
+
+  /* ===== FOOTER ===== */
+  footer{padding:24px; text-align:center; color:var(--muted); border-top:1px solid #f3f4f6}
+
+  /* ===== Animations & Reveal ===== */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.visible{opacity:1; transform:none}
+
+  /* ===== Responsive ===== */
+  @media (max-width:1000px){
+    .hero .wrap{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .hamburger{display:block}
+  }
+  @media (max-width:640px){
+    .founder{flex-direction:column; text-align:center}
+    .faq-grid{grid-template-columns:1fr}
+    .pkg{padding:14px}
+    .brand .title{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner container">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" style="border-radius: 25%;"><Img src="/Screenshot 2025-10-02 140612-Picsart-AiImageEnhancer.png" style="width: 3.5rem;"></Img></div>
+      <div class="title">Liberation Team</div>
+    </div>
+
+    <div class="nav-links" role="navigation" aria-label="Primary">
+      <a href="#how">How</a>
+      <a href="#packages">Packages</a>
+      <a href="#proof">Proof</a>
+      <a href="#faq">FAQ</a>
+      <a href="#founder">Founder</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="hamburger" id="navToggle" aria-controls="navMenu" aria-expanded="false">Menu</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="container wrap">
+    <div>
+      <h1>Boost Your Book with Verified Reader Reviews & Launch Support</h1>
+      <p class="lead muted">Professional ARC reviews, verified purchases, and promotional support across Amazon, Goodreads, BookBub and more. Packages available from <strong>5 → 150 reviews</strong>, tailored per genre and launch goals.</p>
+      <div class="cta-group">
+        <button class="btn" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">See Packages</button>
+        <button class="btn ghost" onclick="document.getElementById('proof').scrollIntoView({behavior:'smooth'})">See Proof</button>
+        <button class="btn secondary" id="downloadPitch" title="Download Pitch Kit">Download Pitch Kit</button>
+      </div>
+      <p class="muted" style="margin-top:12px">Ethics-first: real readers, honest reviews. We do not use bots or fake accounts — transparency guaranteed.</p>
+    </div>
+
+    <aside class="hero-card" aria-hidden="false">
+      <img src="/download (2).jpg" alt="book + support" loading="lazy" style="border-radius:8px;margin-bottom:12px">
+      <div class="reach"><strong>Community reach:</strong> 10000+ verified readers • 50+ genres • Global coverage</div>
+    </aside>
+  </div>
+</header>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="reveal" aria-labelledby="how-title">
+  <div class="container">
+    <h2 id="how-title" class="section-title">How it works — simple, transparent</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px;">
+      <div class="accordion reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="head"><strong>1. Submit</strong><span class="muted">Share book details & goals</span></div>
+        <div class="body">You provide book title, formats, links (if live), preferred platforms and timeframe. We recommend packages based on your launch goals.</div>
+      </div>
+      <div class="accordion reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="head"><strong>2. Match</strong><span class="muted">Genre-targeted reader selection</span></div>
+        <div class="body">We match your book to vetted readers who enjoy your genre. Readers receive ARCs and/or purchase copies depending on the package.</div>
+      </div>
+      <div class="accordion reveal" tabindex="0" role="button" aria-expanded="false">
+        <div class="head"><strong>3. Deliver</strong><span class="muted">Verified reviews + proof</span></div>
+        <div class="body">Reviews are posted, screenshots are captured, and you receive a final report with links, timestamps and suggested ad copy or pull-quotes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" aria-labelledby="packages-title">
+  <div class="container">
+    <h2 id="packages-title" class="section-title">Packages — pick the review volume that fits your goal</h2>
+    <p class="muted">Each package includes genre-targeted readers, honest reviews, and proof. Higher tiers add marketing extras like newsletter mentions, spotlight features, and launch coordination.</p>
+
+    <div class="packages-grid" id="packagesGrid">
+
+      <!-- Package cards: 10 tiers from small to premium -->
+      <!-- 1 -->
+      <article class="pkg reveal" data-reviews="5" data-price="150">
+        <h3>Starter Visibility</h3>
+        <div class="price">$150 — 5 reviews</div>
+        <ul class="features">
+          <li>5 thoughtful reviews on Amazon & Goodreads</li>
+          <li>2-week delivery</li>
+          <li>Screenshots & final report</li>
+        </ul>
+        <div class="more-details">
+          Ideal for debut authors who need to avoid the “0 reviews” barrier and gain first-reader credibility.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Starter Visibility',150,5)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="pkg reveal" data-reviews="10" data-price="300">
+        <h3>Foundation Boost</h3>
+        <div class="price">$300 — 10 reviews</div>
+        <ul class="features">
+          <li>10 verified reviews (mix of ARC + purchases)</li>
+          <li>2-week delivery</li>
+          <li>Genre-targeted readers</li>
+        </ul>
+        <div class="more-details">
+          Gives your book a double-digit presence so new readers see consistent feedback.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Foundation Boost',300,10)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="pkg reveal" data-reviews="20" data-price="500">
+        <h3>Discovery Push</h3>
+        <div class="price">$500 — 20 reviews</div>
+        <ul class="features">
+          <li>20 reviews across Amazon, Goodreads, BookBub</li>
+          <li>1 social mention</li>
+          <li>Screenshots + delivery schedule</li>
+        </ul>
+        <div class="more-details">
+          Great for expanding reach on BookBub and social channels — recommended for authors preparing a first wider push.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Discovery Push',500,20)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="pkg reveal" data-reviews="30" data-price="750">
+        <h3>Momentum Builder</h3>
+        <div class="price">$750 — 30 reviews</div>
+        <ul class="features">
+          <li>30 reviews across major platforms</li>
+          <li>Newsletter mention to engaged readers</li>
+          <li>Verified purchase inclusion</li>
+        </ul>
+        <div class="more-details">
+          Balanced package mixing reviews and direct exposure to our email readers to create momentum.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Momentum Builder',750,30)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="pkg reveal recommended" data-reviews="40" data-price="1000">
+        <div class="badge">Popular</div>
+        <h3>Advanced Exposure</h3>
+        <div class="price">$1,000 — 40 reviews</div>
+        <ul class="features">
+          <li>40 reviews (Amazon, Goodreads, BookBub, B&N)</li>
+          <li>Priority turnaround (10 days)</li>
+          <li>Detailed campaign report</li>
+        </ul>
+        <div class="more-details">
+          The sweet spot for authors who want quick, wide recognition across stores and fast impact.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Advanced Exposure',1000,40)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="pkg reveal" data-reviews="60" data-price="1500">
+        <h3>Professional Impact</h3>
+        <div class="price">$1,500 — 60 reviews</div>
+        <ul class="features">
+          <li>60 verified reviews across major retailers</li>
+          <li>Spotlight feature post & social graphics</li>
+          <li>Priority support & reporting</li>
+        </ul>
+        <div class="more-details">
+          For authors who need volume plus promotional content to amplify results.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Professional Impact',1500,60)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="pkg reveal" data-reviews="80" data-price="2000">
+        <h3>Premium Reach</h3>
+        <div class="price">$2,000 — 80 reviews</div>
+        <ul class="features">
+          <li>80 reviews across all major platforms</li>
+          <li>Dedicated newsletter highlight</li>
+          <li>Custom promotion graphics</li>
+        </ul>
+        <div class="more-details">
+          Hit the 80+ milestone to achieve strong social proof while receiving marketing support.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Premium Reach',2000,80)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="pkg reveal" data-reviews="100" data-price="2500">
+        <h3>Elite Recognition</h3>
+        <div class="price">$2,500 — 100 reviews</div>
+        <ul class="features">
+          <li>100+ reviews across Amazon, Goodreads, BookBub, B&N, Kobo</li>
+          <li>Interview / Q&A content</li>
+          <li>Launch-week coordination</li>
+        </ul>
+        <div class="more-details">
+          Break the 100-review threshold — powerful social proof and promotion for serious launches.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Elite Recognition',2500,100)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="pkg reveal" data-reviews="120" data-price="3500">
+        <h3>Launch Domination</h3>
+        <div class="price">$3,500 — 120 reviews</div>
+        <ul class="features">
+          <li>120 coordinated reviews + launch-day buzz</li>
+          <li>Email campaign to readers</li>
+          <li>Priority execution & reporting</li>
+        </ul>
+        <div class="more-details">
+          Designed to create a high-impact launch week with synchronized reviews and promotions.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Launch Domination',3500,120)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="pkg reveal" data-reviews="150" data-price="5000">
+        <div class="badge">Premium</div>
+        <h3>Ultimate Author Program</h3>
+        <div class="price">$5,000 — 150 reviews</div>
+        <ul class="features">
+          <li>150 highly engaged reader reviews across major platforms</li>
+          <li>Full promotional support: newsletter, social, interview</li>
+          <li>Custom launch campaign strategy & 1:1 consultation</li>
+        </ul>
+        <div class="more-details">
+          The complete program for authors investing in long-term visibility and career momentum.
+        </div>
+        <div class="select">
+          <button class="btn" onclick="selectPackage('Ultimate Author Program',5000,150)">Select</button>
+          <button class="btn ghost toggle">More</button>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="note muted" style="margin-top:12px">Can't find the exact mix you need? We build custom packages and payment plans — contact us.</p>
+  </div>
+</section>
+
+<!-- PROOF: Reviews / Portfolio / Testimonials -->
+<section id="proof" aria-labelledby="proof-title" class="reveal">
+  <div class="container">
+    <h2 id="proof-title" class="section-title">Proof & Results</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 360px; gap:16px; align-items:start">
+      <div>
+        <h3 style="color:var(--red)">Sample Reader Reviews</h3>
+        <div class="review-grid">
+          <div class="review">
+            <div class="meta"><img src="/Pic121.png" alt="avatar" width="48" height="48"><div><strong>John D.</strong><div class="muted">Goodreads</div></div></div>
+            <div style="margin-top:8px; color:#000">“Kordestani makes you feel like you can participate in this next human renaissance, not just watch it unfold. <br> For anyone who feels overwhelmed by the speed of change, this book offers not just clarity, but a reason to be excited again.  <br>It’s bold, visionary, and exactly the kind of thinking we need right now.”</div>
+            <div style="margin-top:8px; color:var(--muted)">Screenshot & link included in report.</div>
+          </div>
+
+          <div class="review">
+            <div class="meta"><img src="/pic121(1).png" alt="avatar" width="48" height="48"><div><strong>Maria S.</strong><div class="muted">Amazon</div></div></div>
+            <div style="margin-top:8px; color:#000">“As an attorney-advocate for children for over 10 years, it has been a challenge to find a book that both educates and empowers young minds. I am excited to say that "Words' does both. <br> One has to read it to appreciate its impact.”</div>
+            <div style="margin-top:8px; color:var(--muted)">Verified purchase noted where applicable.</div>
+          </div>
+
+          <div class="review">
+            <div class="meta"><img src="/download.jpg" alt="avatar" width="48" height="48"><div><strong>Samuel L.</strong><div class="muted">BookBub</div></div></div>
+            <div style="margin-top:8px; color:#000">“Great book for readers who like character-driven plots.”</div>
+            <div style="margin-top:8px; color:var(--muted)">BookBub visibility gives long-term discoverability.</div>
+          </div>
+        </div>
+      </div>
+
+      <aside style="background:var(--card); padding:12px; border-radius:10px; border:1px solid #eee">
+        <h4 style="color:var(--red)">Portfolio Highlights</h4>
+        <div class="portfolio-grid">
+          <div class="portfolio-item"><img src="/81W0xhPRyLL._SY466_.jpg" alt="cover 1"><div class="muted">Jack (The Minnesota Kingstons Book 1) — 1000+ reviews</div></div>
+          <div class="portfolio-item"><img src="51FksfznRLL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="cover 2"><div class="muted">The Lost Kings — 90+ reviews</div></div>
+          <div class="portfolio-item"><img src="/51kT0j2nUvL._SY445_SX342_ControlCacheEqualizer_.jpg" alt="cover 3"><div class="muted">The Exiled Queen: A Roman Era Historical Fantasy (Delight of Humans and Gods) — 108 reviews</div></div>
+        </div>
+
+        <h4 style="margin-top:12px;color:var(--red)">Testimonials</h4>
+        <blockquote style="font-style:italic;color:var(--muted)">“Liberation Team delivered professional reviews plus marketing support — our launch saw sustained sales for weeks.” — Indie author</blockquote>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="counters reveal" aria-hidden="false">
+  <div class="container">
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-around; align-items:center">
+      <div class="counter"><h3 id="cBooks">0</h3><p>Books Reviewed</p></div>
+      <div class="counter"><h3 id="cReaders">0</h3><p>Verified Readers</p></div>
+      <div class="counter"><h3 id="cReviews">0</h3><p>Reviews Delivered</p></div>
+      <div class="counter"><h3 id="cGenres">0</h3><p>Genres Covered</p></div>
+    </div>
+  </div>
+</section>
+<!-- IMPORTANCE OF REVIEWS -->
+<section id="importance" class="reveal">
+  <div class="container">
+    <h2 class="section-title">Why Reviews Matter</h2>
+    <div class="muted" style="white-space:pre-line; color:var(--black);">
+When you put a book out on Amazon, one of the most important things that determines how well it will perform isn’t just the cover, the description, or even the price — it’s the reviews. Reviews are what prove to other readers that your book is real, that it has been read, and that it’s worth spending time and money on. Without reviews, a book simply sits there like a display item that nobody is touching. In a crowded marketplace like Amazon, where thousands of books are added every single day, having no reviews is almost the same as being invisible.
+
+Think about it from the reader’s perspective for a moment. A reader comes across your book. They like the cover, they read the description, maybe even feel a spark of interest. But then they scroll down and see “no reviews.” What happens in that exact moment? Doubt. They pause. They hesitate. They start asking themselves: “If this book is really good, why hasn’t anyone reviewed it? Has nobody read it? Is it new? Is it risky?” That small seed of doubt is enough to make them click away.
+
+Now, compare that to the experience of seeing a book that already has reviews. Even if all the reviews are not five-star perfect, the feeling a reader gets is completely different. When they see 10, 20, or 50 reviews, they immediately feel safer. They know that others have read it, they know they are not taking a blind risk, and that little assurance makes all the difference. Reviews work like social proof — they turn curiosity into trust. And trust is what makes a reader press “buy.”
+
+You and I have both been there. Imagine shopping online, whether it’s on Amazon, eBay, or any other store. If you see a product that looks good but has no reviews, you almost never want to be the first to try it. It feels like a gamble. But when you see that same product with reviews, even a mix of good and average ones, your reaction changes completely. You feel like you can believe in it, and you’re far more likely to spend your money. That same psychology applies to books. Readers rely heavily on what others say. They trust reviews more than they trust advertising.
+
+Here’s where the problem gets even bigger: without reviews, marketing loses almost all of its power. You can spend money on ads, post on social media, or do all kinds of promotion to bring readers to your book page. But if they arrive and see nothing there — no reviews, no feedback, no sign of life — most of them won’t buy. You might get clicks, but clicks don’t equal sales. That means your marketing spend becomes a waste, and the return on investment is almost zero. You are putting money out, but not bringing money back in, all because the credibility is missing.
+
+And it’s not just the readers you lose. Amazon itself is designed to reward books that have reviews. The algorithm pays attention to books that are active — those with reviews, ratings, and regular engagement. That’s how Amazon decides which books to recommend to readers, which books to show in the “customers also bought” section, and which ones to push in search results. Without reviews, your book doesn’t trigger the algorithm. It doesn’t get noticed. It stays buried under thousands of other titles, no matter how good it is or how much effort went into it.
+
+So, when a book has no reviews, the chain reaction is very clear. The book becomes invisible. Readers don’t trust it. Marketing efforts don’t pay off. The author ends up feeling frustrated, because even after investing time, effort, and money, the results are far below expectations. On the other hand, when a book has reviews, everything changes. Readers feel trust the moment they land on the page. Marketing starts to convert because people believe in the book. Amazon’s system picks it up and gives it more visibility. And most importantly, the author begins to see sales that actually grow over time.
+
+Reviews are not just little comments under your book. They are the key to unlocking visibility, credibility, and long-term success. They are what make the difference between a book that feels alive and active versus one that feels abandoned and ignored. Even a handful of reviews can change the energy around a book. Readers notice them, algorithms notice them, and suddenly the book is no longer hidden — it’s part of the conversation.
+
+That’s why, if you really want your book to succeed on Amazon or in any online marketplace, you cannot afford to ignore reviews. They are the foundation that everything else — marketing, visibility, and sales — is built on. Without them, the book stands in silence. With them, the book speaks, attracts, and grows.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="reveal" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title" class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div>
+        <strong>Q: Are these real reviews?</strong>
+        <p class="muted">A: Yes — real readers write honest reviews. We provide screenshots and links as proof. We never use bots or fake accounts.</p>
+
+        <strong>Q: Do you guarantee 5-star reviews?</strong>
+        <p class="muted">A: No. We guarantee honest, thoughtful reviews that reflect readers' experiences. Authenticity protects long-term discoverability.</p>
+
+        <strong>Q: What platforms do you cover?</strong>
+        <p class="muted">A: Amazon, Goodreads, BookBub, B&N, Kobo, Apple Books and optional social sites (Instagram/TikTok) depending on package.</p>
+      </div>
+
+      <div>
+        <strong>Q: How long does delivery take?</strong>
+        <p class="muted">A: Small packages typically 2–3 weeks. Priority packages can be delivered in 7–10 days. Exact timeline depends on availability and format.</p>
+
+        <strong>Q: Refunds & disputes?</strong>
+        <p class="muted">A: We walk each author through our policies upfront. If a delivery doesn't meet agreed terms, we investigate and offer remediation or partial credit.</p>
+
+        <strong>Q: Are reviews permanent?</strong>
+        <p class="muted">A: Reviews remain on platform unless removed by the platform itself per their policies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder" class="reveal" aria-labelledby="founder-title">
+  <div class="container">
+    <h2 id="founder-title" class="section-title">Founder & Organizer</h2>
+    <div class="founder">
+      <img src="/Untitled Design - 1.png" alt="Daniel KOV" loading="lazy">
+      <div>
+        <h3 style="margin:0;color:var(--red)">Daniel "KOV" Adekunle Ayotoba</h3>
+        <p class="muted">Daniel started Liberation Team after seeing how many great books never reached readers. He has 6+ years coordinating review programs and a vetted network of genre readers who value thoughtful feedback and ethical promotion.</p>
+        <p class="muted"><strong>Contact:</strong> <a href="mailto:danielliberation101@gmail.com">danielliberation101@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal" aria-labelledby="contact-title">
+  <div class="container">
+    <h2 id="contact-title" class="section-title">Ready to boost your book? Get in touch</h2>
+
+    <div class="contact-card">
+      <form id="contactForm" novalidate>
+        <div class="row">
+          <input id="name" name="name" type="text" placeholder="Your full name *" required>
+          <input id="email" name="email" type="email" placeholder="Your email *" required>
+        </div>
+
+        <div class="row" style="margin-top:8px">
+          <input id="book" name="book" type="text" placeholder="Book title & author *" required>
+          <select id="packageSelect" name="package" aria-label="Choose package">
+            <option value="">Choose a package (or select from packages above)</option>
+            <option value="Starter Visibility — $150">Starter Visibility — $150 (5 reviews)</option>
+            <option value="Foundation Boost — $300">Foundation Boost — $300 (10 reviews)</option>
+            <option value="Discovery Push — $500">Discovery Push — $500 (20 reviews)</option>
+            <option value="Momentum Builder — $750">Momentum Builder — $750 (30 reviews)</option>
+            <option value="Advanced Exposure — $1000">Advanced Exposure — $1000 (40 reviews)</option>
+            <option value="Professional Impact — $1500">Professional Impact — $1500 (60 reviews)</option>
+            <option value="Premium Reach — $2000">Premium Reach — $2000 (80 reviews)</option>
+            <option value="Elite Recognition — $2500">Elite Recognition — $2500 (100 reviews)</option>
+            <option value="Launch Domination — $3500">Launch Domination — $3500 (120 reviews)</option>
+            <option value="Ultimate Author Program — $5000">Ultimate Author Program — $5000 (150 reviews)</option>
+          </select>
+        </div>
+
+        <textarea id="message" name="message" placeholder="Message, timeframe, preferred platforms, extra notes"></textarea>
+
+        <div class="form-actions">
+          <button type="button" class="btn" id="submitBtn">Send Request</button>
+          <button type="button" class="btn ghost" id="calendlyBtn">Schedule a Call</button>
+        </div>
+
+        <p class="note">By contacting us you agree we may reply to your email. Sensitive data should not be shared via this form.</p>
+
+      </form>
+    </div>
+
+    <p style="margin-top:12px" class="muted">Prefer WhatsApp? <a href="https://wa.me/2349035660376" target="_blank" rel="noopener">Message us</a> — or <a href="https://calendly.com/" id="calendlyLink" target="_blank" rel="noopener">book a call</a>.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center">
+      <div>&copy; <strong>Liberation Team</strong> — Honest reviews & ethical launch support</div>
+      <div style="margin-left:8px">| <a href="#">Terms & Conditions</a> | <a href="#">Privacy</a> | <a href="#">Disclaimer</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- JSON-LD structured data for packages (light) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Author Visibility Program",
+  "description":"Professional ARC reviews and verified reader support — packages from 5 to 150 reviews, marketing boosts, newsletter features, and full launch support.",
+  "provider":{
+    "@type":"Organization",
+    "name":"Liberation Team",
+    "email":"danielliberation101@gmail.com"
+  }
+}
+</script>
+
+<script>
+/* ===== Helper / UI logic ===== */
+
+/* Mobile nav toggle */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+navToggle?.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', (!expanded).toString());
+  if(!expanded){ navLinks.style.display = 'flex'; navLinks.style.flexDirection = 'column'; navLinks.style.gap='8px';}
+  else { navLinks.style.display = ''; navLinks.style.flexDirection = ''; }
+});
+
+/* Reveal on scroll using IntersectionObserver */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Counters animation */
+function animateCount(el, target, suffix=''){
+  const duration = 1200; // ms
+  const steps = 60;
+  let current = 0;
+  const inc = Math.max(1, Math.round(target/steps));
+  const id = setInterval(() => {
+    current += inc;
+    if(current >= target){
+      el.textContent = target.toLocaleString() + suffix; clearInterval(id);
+    } else {
+      el.textContent = Math.floor(current).toLocaleString() + suffix;
+    }
+  }, duration/steps);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  // you can update these numbers from your real stats
+  animateCount(document.getElementById('cBooks'), 1500, '+');
+  animateCount(document.getElementById('cReaders'), 10000, '+');
+  animateCount(document.getElementById('cReviews'), 75000, '+');
+  animateCount(document.getElementById('cGenres'), 50, '+');
+});
+
+/* Toggle "More" inside package cards */
+document.querySelectorAll('.pkg .toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.pkg');
+    const details = card.querySelector('.more-details');
+    if(details.style.display === 'block'){ details.style.display = ''; btn.textContent='More'; }
+    else { details.style.display = 'block'; btn.textContent='Less'; }
+  });
+});
+
+/* Accordion expand/collapse for how-step blocks */
+document.querySelectorAll('.accordion').forEach(acc => {
+  acc.addEventListener('click', () => {
+    const body = acc.querySelector('.body');
+    const isOpen = body && body.style.display === 'block';
+    // close all siblings
+    document.querySelectorAll('.accordion .body').forEach(d => d.style.display = 'none');
+    if(!isOpen) body.style.display = 'block';
+  });
+});
+
+/* Select package and prefill contact form, then scroll to contact */
+function selectPackage(name, price, reviews){
+  const select = document.getElementById('packageSelect');
+  // find option that starts with package name
+  let optFound = null;
+  for(const opt of select.options){
+    if(opt.textContent.toLowerCase().includes(name.toLowerCase().split(' ')[0])) { optFound = opt; break; }
+  }
+  if(optFound) select.value = optFound.value;
+  else {
+    const newOpt = document.createElement('option');
+    newOpt.value = `${name} — $${price}`;
+    newOpt.text = `${name} — $${price}`;
+    select.add(newOpt);
+    select.value = newOpt.value;
+  }
+  // briefly highlight contact
+  const contact = document.getElementById('contact');
+  contact.scrollIntoView({behavior:'smooth', block:'start'});
+  // flash on the form
+  const card = document.querySelector('.contact-card'); if(card){ card.style.boxShadow = '0 12px 40px rgba(0,0,0,0.08)'; setTimeout(()=>card.style.boxShadow='none',1800); }
+}
+
+/* Contact form handling — mailto fallback */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const book = document.getElementById('book').value.trim();
+  const packageVal = document.getElementById('packageSelect').value;
+  const message = document.getElementById('message').value.trim();
+
+  if(!name || !email || !book){
+    alert('Please fill your name, email and book title before sending.');
+    return;
+  }
+  // basic email regex
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){ alert('Please enter a valid email address.'); return; }
+
+  // build mailto
+  const to = 'danielliberation101@gmail.com';
+  const subject = encodeURIComponent(`AuthorBoost Request: ${book}`);
+  const bodyLines = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Book: ${book}`,
+    `Selected package: ${packageVal || 'Not selected'}`,
+    `Message: ${message || 'N/A'}`,
+  ];
+  const mailto = `mailto:${to}?subject=${subject}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+  window.location.href = mailto;
+});
+
+/* Calendly / Schedule */
+document.getElementById('calendlyBtn').addEventListener('click', () => {
+  window.open('#', '_blank');
+});
+
+/* Pitch kit button */
+document.getElementById('downloadPitch').addEventListener('click', () => {
+  // Replace PITCH_URL with your actual file path
+  const PITCH_URL = 'files/Liberation_Successful_Team_Pitch_Kit_UPDATED.pdf';
+  // if it's hosted, open it; otherwise show message
+  if(PITCH_URL){
+    window.open(PITCH_URL, '_blank');
+  } else {
+    alert('Pitch kit not available. Add a PDF at the PITCH_URL path.');
+  }
+});
+</script>
+</body>
+</html>
